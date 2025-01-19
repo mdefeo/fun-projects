@@ -1,0 +1,282 @@
+body {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: #0C151D;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+}
+
+.solar-system {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: #0C151D;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background: radial-gradient(at center, #323637, #0D161D);
+  padding: 0;
+  margin: 0;
+}
+
+
+.star {
+  position: absolute;
+  background-color: white;
+  border-radius: 50%;
+  opacity: 0;
+  animation: blink 1s infinite alternate;
+  z-index: 1;
+}
+
+.star:nth-child(odd) {
+  animation: blink 1.5s infinite alternate;
+}
+
+.star:nth-child(even) {
+  animation: blink 2s infinite alternate;
+}
+
+/*
+Sun is not to scale. Actual size would be::after.sun {
+  width: 3052px;
+  height: 3052px;
+*/
+
+.sun {
+  position: absolute;
+  background-size: cover;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background-image: url('https://assets-indol-beta.vercel.app/sun.svg');
+  z-index: 10;
+  animation: pulseGlow 6s ease-in-out infinite;
+}
+
+.solar-flare {
+  position: absolute;
+  background: radial-gradient(circle, rgba(255, 255, 0, 0.8) 0%, rgba(255, 165, 0, 0.5) 50%, rgba(255, 69, 0, 0.3) 100%);
+  border-radius: 50%;
+  opacity: 0;
+  animation: flareBlink 5s infinite alternate;
+  z-index: 5;
+  transform: scale(0.2);
+}
+
+@keyframes flareBlink {
+  0% {
+    opacity: 0.1;
+    transform: scale(0.2) rotate(0deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(0.6) rotate(360deg);
+  }
+}
+
+.solar-flare:nth-child(odd) {
+  border-radius: 25%;
+}
+
+.solar-flare:nth-child(even) {
+  border-radius: 50% 25% 50% 50%;
+}
+
+.planet {
+  position: absolute;
+  border-radius: 50%;
+  background-size: contain;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+.mercury {
+  width: 12px;
+  height: 12px;
+  background-image: url('https://assets-indol-beta.vercel.app/mercury.svg');
+  animation: orbit-mercury 8s linear infinite;
+  z-index: 9;
+}
+
+.venus {
+  width: 31px;
+  height: 31px;
+  background-image: url('https://assets-indol-beta.vercel.app/venus.svg');
+  animation: orbit-venus 12s linear infinite;
+  z-index: 8; 
+}
+
+.earth {
+  width: 33px;
+  height: 33px;
+  animation: orbit-earth 16s linear infinite;
+  z-index: 7;
+  background-image: url('https://assets-indol-beta.vercel.app/earth.svg');
+}
+
+.mars {
+  width: 20px;
+  height: 20px;
+  background-image: url('https://assets-indol-beta.vercel.app/mars.svg');
+  animation: orbit-mars 20s linear infinite;
+  z-index: 6;
+}
+
+.jupiter {
+  width: 231px;
+  height: 231px;
+  background-image: url('https://assets-indol-beta.vercel.app/jupiter.svg');
+  animation: orbit-jupiter 24s linear infinite;
+  z-index: 5;
+}
+
+.saturn {
+  width: 1200px;
+  height: 197px;
+  background-image: url('https://assets-indol-beta.vercel.app/saturn.svg');
+  animation: orbit-saturn 28s linear infinite;
+}
+
+.uranus {
+  width: 88px;
+  height: 88px;
+  background-image: url('https://assets-indol-beta.vercel.app/uranus.svg');
+  animation: orbit-uranus 32s linear infinite;
+
+}
+
+.neptune {
+  width: 87px;
+  height: 87px;
+  background-image: url('https://assets-indol-beta.vercel.app/neptune.svg');
+  animation: orbit-neptune 36s linear infinite;
+  z-index: 2;
+}
+
+
+.planet-label {
+  position: absolute;
+  color: white;
+  font-size: 14px;
+  text-align: right;
+  z-index: 20;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.planet:hover .planet-label {
+  opacity: 1;
+}
+
+
+@keyframes orbit-mercury {
+  0% {
+    transform: rotate(0deg) translateX(225px) translateY(80px) rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg) translateX(225px) translateY(80px) rotate(-360deg);
+  }
+}
+
+@keyframes orbit-venus {
+  0% {
+    transform: rotate(0deg) translateX(250px) translateY(80px) rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg) translateX(250px) translateY(80px) rotate(-360deg);
+  }
+}
+
+
+@keyframes orbit-earth {
+  0% {
+    transform: rotate(0deg) translateX(300px) translateY(100px) rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg) translateX(300px) translateY(100px) rotate(-360deg);
+  }
+}
+
+@keyframes orbit-mars {
+  0% {
+    transform: rotate(0deg) translateX(350px) translateY(120px) rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg) translateX(350px) translateY(120px) rotate(-360deg);
+  }
+}
+
+@keyframes orbit-jupiter {
+  0% {
+    transform: rotate(0deg) translateX(450px) translateY(150px) rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg) translateX(450px) translateY(150px) rotate(-360deg);
+  }
+}
+
+@keyframes orbit-saturn {
+  0% {
+    transform: rotate(0deg) translateX(525px) translateY(175px) rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg) translateX(525px) translateY(175px) rotate(-360deg);
+  }
+}
+
+@keyframes orbit-uranus {
+  0% {
+    transform: rotate(0deg) translateX(600px) translateY(200px) rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg) translateX(600px) translateY(200px) rotate(-360deg);
+  }
+}
+
+@keyframes orbit-neptune {
+  0% {
+    transform: rotate(0deg) translateX(650px) translateY(220px) rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg) translateX(650px) translateY(220px) rotate(-360deg);
+  }
+}
+
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 17px 5px rgba(255, 69, 0, 1), 0 0 25px 12px rgba(255, 165, 0, 1);
+  }
+
+  50% {
+    box-shadow: 0 0 38px 20px rgba(255, 69, 0, 1), 0 0 62px 25px rgba(255, 165, 0, 1);
+  }
+
+  100% {
+    box-shadow: 0 0 12px 5px rgba(255, 69, 0, 1), 0 0 25px 12px rgba(255, 165, 0, 1);
+  }
+}
+@keyframes blink {
+  0% {
+    opacity: 0.1;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

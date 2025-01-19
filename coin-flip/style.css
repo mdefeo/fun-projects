@@ -1,0 +1,75 @@
+body {
+  margin: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background-color:hsla(144,42%,23%,1);
+  background-image:
+  radial-gradient(at 60% 54%, hsla(148,100%,27%,1) 0px, transparent 50%),
+  radial-gradient(at 67% 15%, hsla(151,100%,28%,1) 0px, transparent 50%),
+  radial-gradient(at 42% 38%, hsla(151,100%,30%,1) 0px, transparent 50%),
+  radial-gradient(at 50% 54%, hsla(152,100%,31%,1) 0px, transparent 50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+.coin-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 200px;
+}
+
+.coin-flip {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.coin-flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 1s ease-in-out;
+}
+
+.coin-flip-heads,
+.coin-flip-tails {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2em;
+  backface-visibility: hidden;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.coin-flip-heads {
+  background-image: url('https://assets-indol-beta.vercel.app/heads.png');
+}
+
+.coin-flip-tails {
+  background-image: url('https://assets-indol-beta.vercel.app/tails.png');
+  transform: rotateY(180deg);
+}
+
+input[type=checkbox] {
+  display: none;
+}
+
+input[type=checkbox]:checked + label .coin-flip-inner {
+  display: block;
+  transform: rotateY(720deg);
+}
